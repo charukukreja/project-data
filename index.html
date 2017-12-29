@@ -2,7 +2,7 @@
 
 <head>
   <meta charset='utf-8' />
-  <title>NYC vehicle collisions</title>
+  <title>U.S. Overdose Deaths</title>
   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
   <script src='https://api.mapbox.com/mapbox-gl-js/v0.42.1/mapbox-gl.js'></script>
   <link href='https://api.mapbox.com/mapbox-gl-js/v0.42.1/mapbox-gl.css' rel='stylesheet' />
@@ -59,7 +59,7 @@
   }
 
   .label {
-    width: 50%;
+    width: 15%;
     display: inline-block;
     text-align: center;
   }
@@ -76,11 +76,11 @@
       <div class='row colors'>
       </div>
       <div class='row labels'>
-        <div class='label'>0-4</div>
-        <div class='label'>4.1-8</div>
-        <div class='label'>8.1-12</div>
-        <div class='label'>12.1-16</div>
-        <div class='label'>16.1-20</div>
+        <div class='label'>0</div>
+        <div class='label'>4</div>
+        <div class='label'>8</div>
+        <div class='label'>12</div>
+        <div class='label'>16</div>
         <div class='label'>20+</div>
       </div>
     </div>
@@ -132,8 +132,6 @@
           6, '#AA5E79'
         ],
         'circle-opacity': 0.8
-      }
-      'filter': ['==', ['number',['get', 'Year']], 2015]
     }, 'admin-2-boundaries-dispute');
     });
     
