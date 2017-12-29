@@ -84,6 +84,10 @@
         <div class='label'>20+</div>
       </div>
     </div>
+    <div class='session' id='sliderbar'>
+      <h2>Year: <label id='active-year'>2015</label></h2>
+      <input id='slider' class='row' type='range' min='1999' max='2015' step='1' value='2015' />
+    </div>
   </div>
   <script>
 
@@ -98,7 +102,7 @@
 
   map.on('load', function() {
     map.addLayer({
-      id: 'collisions',
+      id: 'step',
       type: 'circle',
       source: {
         type: 'geojson',
@@ -129,8 +133,19 @@
         ],
         'circle-opacity': 0.8
       }
+      'filter': ['==', ['number',['get', 'Year']], 2015]
     }, 'admin-2-boundaries-dispute');
-});
+    
+    // update year filter when the slider is dragged
+    document.getElementById('slider').addEventListener('input', function(e) {
+      var year = parseInt(e.target.value);
+      // update the map
+      map.setFilter('step', ['==', ['number', ['get', 'Year']], year]);
 
+      // update text in the UI
+      document.getElementById('active-year')
+    });
+    
+});
   </script>
 </body>
