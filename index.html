@@ -102,24 +102,22 @@
 
   map.on('load', function() {
     map.addLayer({
-      id: 'step',
+      id: 'age adjusted rate',
       type: 'circle',
-      source: {
-        type: 'geojson',
-        data: 'opioid.geojson' // replace this with the url of your own geojson
-      },
-      paint: {
-        'circle-radius': [
-          'interpolate',
-          ['exponential', 5],
-          ['number', ['get', 'age-adjusted rate']],
-          0,
-          4,
-          8,
-          12,
-          16,
-          20
-        ],
+      'source': 'opioid.geojson',
+      'source-layer': 'age-adjusted rate',
+      'paint': {
+        'circle-radius': {
+          property: 'sqrt',
+          stops: [
+             [{zoom: 8,  value: 0}, 0],
+                            [{zoom: 8,  value: 42}, 1],
+                            [{zoom: 11, value: 0}, 0],
+                            [{zoom: 11, value: 42}, 6],
+                            [{zoom: 16, value: 0}, 0],
+                            [{zoom: 16, value: 42}, 40]
+            ]
+        },
         'circle-color': [
           'interpolate',
           ['exponential', 1],
