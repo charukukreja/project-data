@@ -105,17 +105,17 @@
       id: 'age adjusted rate',
       type: 'circle',
       'source': 'opioid.geojson',
-      'source-layer': 'age-adjusted rate',
+      'source-layer': 'step',
       'paint': {
         'circle-radius': {
           property: 'sqrt',
           stops: [
              [{zoom: 8,  value: 0}, 0],
-                            [{zoom: 8,  value: 42}, 1],
+                            [{zoom: 8,  value: 6}, 1],
                             [{zoom: 11, value: 0}, 0],
-                            [{zoom: 11, value: 42}, 6],
+                            [{zoom: 11, value: 6}, 1],
                             [{zoom: 16, value: 0}, 0],
-                            [{zoom: 16, value: 42}, 40]
+                            [{zoom: 16, value: 6}, 1]
             ]
         },
         'circle-color': [
