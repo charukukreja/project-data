@@ -1,1 +1,54 @@
+<!DOCTYPE html>
+<html>
 
+<head>
+    <meta charset='utf-8'>
+    <title>Pedestrian foot traffic at intersections</title>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v0.42.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v0.42.1/mapbox-gl.css' rel='stylesheet' />
+    <link href='https://www.mapbox.com/base/latest/base.css' rel='stylesheet' />
+    <style>
+    #map {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+
+    #locations {
+      position: absolute;
+    }
+    </style>
+</head>
+
+<body>
+    <div id='map'></div>
+    <script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoiY2hhcnVrdWtyZWphIiwiYSI6ImNqYnM5YjZxZTBxbHkydnVmMjNzajlsbG8ifQ.Pqiicpc8in5DduB-c-3Xrw'; // Put your Mapbox Public Access token here
+
+    // Load a new map in the 'map' HTML div
+    var map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/dark-v9',
+      center: [-79.3832, 43.6512],
+      zoom: 11
+    });
+
+    // Load the vector tile source from the Mapbox Pedestrian traffic example
+    map.on('load', function() {
+      // Add the circle layer to the map
+      map.addLayer({
+        id: 'overdose rates',
+        type: 'circle',
+        source: {
+          type: 'vector',
+          url: 'charukukreja.cjbsdrv9n0qxb2qmkh1brpktw-39cyp' // Your Mapbox tileset Map ID
+        },
+        'source-layer': 'opioid' // name of tilesets
+      });
+    });
+    </script>
+</body>
+
+</html>
