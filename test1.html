@@ -47,13 +47,17 @@
         },
         'source-layer': '2015_overdosedata',
         paint: {
+        'circle-color': '#D49A66',
         'circle-radius': {
-        property: 'Age-adjusted Rate',
+        property: 'step',
         type: 'exponential',
         stops: [
-            [6.9, 2],
-            [41.5, 10]
+            [1, 2],
+            [6, 10]
           ]
+          },
+      'circle-opacity': 0.8
+    }
       });
     });
     </script>
