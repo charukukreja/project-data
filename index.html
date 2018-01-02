@@ -109,17 +109,11 @@
         data: 'opioid.geojson' // replace this with the url of your own geojson
       },
       paint: {
-        'circle-radius': [
-          'interpolate',
-          ['exponential', 5],
-          ['number', ['get', 'age-adjusted rate']],
-          0,
-          4,
-          8,
-          12,
-          16,
-          20
-        ],
+        'circle-radius': 
+        {'base':1,'type':exponential',
+         'property':'age-adjusted rate',
+         'stops'[[0,4],[4,6],[8,14],[12,16],[16,20],[20,24],[24,30]]}
+      },    
         'circle-color': [
           'interpolate',
           ['exponential', 1],
