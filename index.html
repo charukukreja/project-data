@@ -109,15 +109,18 @@
         data: 'opioid.geojson' // replace this with the url of your own geojson
       },
        paint: {
-        'circle-radius': [
-          'interpolate',
-          ['linear'],
-          ['number', ['get', 'step']],
-          1, 2,
-          3, 4,
-          5, 6
-        ],
-      
+        'circle-radius': {
+          property: 'step',
+          stops: [
+          [1,1],
+          [2,2],
+          [3,3],
+          [4,4],
+          [5,5],
+          [6,6]
+        ]
+        }
+         
         'circle-color': [
           'interpolate',
           ['linear', 1],
