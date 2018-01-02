@@ -109,6 +109,7 @@
         url: 'mapbox://charukukreja.cjbsdrv9n0qxb2qmkh1brpktw-39cyp' // replace this with the url of your own geojson
       },
        paint: {
+        'circle-color': '#D49A66',
         'circle-radius': {
           property: 'age-adjusted rate',
           type: 'exponential',
@@ -122,17 +123,6 @@
           [24,30]
         ]
         },  
-        'circle-color': [
-          'interpolate',
-          ['linear', 1],
-          ['number', ['get', 'Step']],
-          1, '#2DC4B2',
-          2, '#3BB3C3',
-          3, '#669EC4',
-          4, '#8B88B6',
-          5, '#A2719B',
-          6, '#AA5E79'
-        ],
         'circle-opacity': 0.8
       }
     }, 'admin-2-boundaries-dispute');
