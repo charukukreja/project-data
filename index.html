@@ -111,15 +111,9 @@
       paint: {
         'circle-radius': [
           'interpolate',
-          ['linear', 1],
+          ['exponential', 1],
           ['number', ['get', 'age-adjusted rate']],
-          0,
-          4,
-          8,
-          12,
-          16,
-          20
-        ],
+          ['stops', [[0,4],[4,6],[8,14],[12,16],[16,20],[20,24],[24,30]],
       
         'circle-color': [
           'interpolate',
