@@ -45,7 +45,15 @@
           type: 'vector',
           url: 'mapbox://charukukreja.cjbxvy05v2qdd33loin5seycn-2s5jx' // Your Mapbox tileset Map ID
         },
-        'source-layer': '2015_overdosedata' // name of tilesets
+        'source-layer': '2015_overdosedata',
+        paint: {
+        'circle-radius': {
+        property: 'Age-adjusted Rate',
+        type: 'exponential',
+        stops: [
+            [6.9, 2],
+            [41.5, 10]
+          ]
       });
     });
     </script>
