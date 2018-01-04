@@ -36,20 +36,18 @@
     });
 
     // Load the vector tile source from the Mapbox Pedestrian traffic example
-  map.on('load', function() {
-  map.addLayer({
-    id: 'pedestrian_volume',
-    type: 'circle',
-    source: {
-      type: 'vector',
-      url: 'mapbox://charukukreja.cjc0v17t402g32qo48svibhja-2z6ev' // Your Mapbox tileset Map ID
-    },
-    // name of tilesets
-    'source-layer': 'peddata',
-    paint: {
-      'circle-color': '#D49A66',
-  });
-});
+    map.on('load', function() {
+      // Add the circle layer to the map
+      map.addLayer({
+        id: 'pedestrian_volume',
+        type: 'circle',
+        source: {
+          type: 'vector',
+          url: 'mapbox://charukukreja.cjc0v17t402g32qo48svibhja-2z6ev' // Your Mapbox tileset Map ID
+        },
+        'source-layer': 'peddata' // name of tilesets
+      });
+    });
     </script>
 </body>
 
