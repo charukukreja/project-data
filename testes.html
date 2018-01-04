@@ -54,9 +54,10 @@
         'circle-radius': {
           property: 'Age-adjusted rate',
           type: 'exponential',
+          base: 1,
           stops: [
-            [1, 2],
-            [42, 10]
+            [0, 4],
+            [24, 30]
           ]
         },
         'circle-opacity': 0.8
