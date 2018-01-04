@@ -52,12 +52,11 @@
         'circle-color': '#D49A66',
         //Add data-driven styles for circle radius
         'circle-radius': {
-          property: 'Age-adjusted rate',
+          property: 'step',
           type: 'exponential',
-          base: 1,
           stops: [
-            [0, 4],
-            [24, 30]
+            [1, 2],
+            [6, 10]
           ]
         },
         'circle-opacity': 0.8
