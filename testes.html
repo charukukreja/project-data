@@ -51,13 +51,7 @@
       paint: {
         'circle-color': '#D49A66',
         //Add data-driven styles for circle radius
-        'circle-radius': {
-          property: 'age-adjusted rate',
-          type: 'exponential',
-          stops: [
-            [1, 2],
-            [50, 10]
-          ]
+        'circle-radius': "sqrt", ["/", ["get", "step"]
         },
         'circle-opacity': 0.8
       }
