@@ -46,6 +46,19 @@
           url: 'mapbox://charukukreja.cjc0v17t402g32qo48svibhja-2z6ev' // Your Mapbox tileset Map ID
         },
         'source-layer': 'peddata' // name of tilesets
+          paint: {
+      'circle-color': '#D49A66',
+      // Add data-driven styles for circle radius
+      'circle-radius': {
+        property: '8Hr Pedestrian Volume',
+        type: 'exponential',
+        stops: [
+          [124, 2],
+          [34615, 10]
+        ]
+      },
+      'circle-opacity': 0.8
+    }
       });
     });
     </script>
