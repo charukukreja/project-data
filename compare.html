@@ -59,6 +59,12 @@ var map = new mapboxgl.Compare(beforeMap, afterMap, {
     // mousemove: true
 });    
 afterMap.addControl(new mapboxgl.NavigationControl());
+afterMap.on('click', '2015-dv0ewk', function (e) {
+        new mapboxgl.Popup()
+            .setLngLat(e.lngLat)
+            .setHTML(e.features[0].properties.name)
+            .addTo(map);
+    });
 </script>
 
 </body>
