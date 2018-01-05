@@ -46,12 +46,6 @@ var beforeMap = new mapboxgl.Map({
     center: [-95.320, 39.245],
     zoom: 3.5
 });
-      beforemap.on('click', '1999-2uye7g', function (e) {
-        new mapboxgl.Popup()
-            .setLngLat(e.lngLat)
-            .setHTML(e.features[0].properties.1999_NCH_4)
-            .addTo(map);
-    });
 
 var afterMap = new mapboxgl.Map({
     container: 'after',
