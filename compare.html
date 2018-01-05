@@ -46,6 +46,12 @@ var beforeMap = new mapboxgl.Map({
     center: [-95.320, 39.245],
     zoom: 3.5
 });
+      map.on('click', '2015-dv0ewk', function (e) {
+        new mapboxgl.Popup()
+            .setLngLat(e.lngLat)
+            .setHTML(e.features[0].properties.2015_NCH_3)
+            .addTo(map);
+    });
 
 var afterMap = new mapboxgl.Map({
     container: 'after',
