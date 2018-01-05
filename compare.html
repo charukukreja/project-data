@@ -43,15 +43,15 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiY2hhcnVrdWtyZWphIiwiYSI6ImNqYnM5YjZxZTBxbHkyd
 var beforeMap = new mapboxgl.Map({
     container: 'before',
     style: 'mapbox://styles/charukukreja/cjc2b09nn0ahu2std4cw2kwfa',
-    center: [-74, 0],
-    zoom: 3
+    center: [-95.320, 39.245],
+    zoom: 3.5
 });
 
 var afterMap = new mapboxgl.Map({
     container: 'after',
-    style: 'mapbox://styles/charukukreja/cjc2fgazy1mzo2sqfprjhtqpw',
-    center: [-74, 0],
-    zoom: 3
+    style: 'mapbox://styles/charukukreja/cjc2fw7691nna2roc026li2zp',
+    center: [-95.320, 39.245],
+    zoom: 3.5
 });
 
 var map = new mapboxgl.Compare(beforeMap, afterMap, {
