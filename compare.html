@@ -61,6 +61,22 @@ body * {
 
 <div id='before' class='map'></div>
 <div id='after' class='map'></div>
+<div id='console'>
+    <h1>Overdose Death Rates</h1>
+    <p>Data: <a href='https://www.cdc.gov/drugoverdose/data/statedeaths.html'>U.S. Overdose Death Rates</a> from 1999-2015</p>
+    <div class='session'>
+      <h2>Death Rate (age adjusted per 1,000)</h2>
+      <div class='row colors'>
+      </div>
+      <div class='row labels'>
+        <div class='label'>0</div>
+        <div class='label'>4</div>
+        <div class='label'>8</div>
+        <div class='label'>12</div>
+        <div class='label'>16</div>
+        <div class='label'>20+</div>
+      </div>
+    </div>
 <script>
 mapboxgl.accessToken = 'pk.eyJ1IjoiY2hhcnVrdWtyZWphIiwiYSI6ImNqYnM5YjZxZTBxbHkydnVmMjNzajlsbG8ifQ.Pqiicpc8in5DduB-c-3Xrw';
 var beforeMap = new mapboxgl.Map({
