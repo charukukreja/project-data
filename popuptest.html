@@ -28,22 +28,23 @@
       container: 'map',
       style: 'mapbox://styles/charukukreja/cjc2fw7691nna2roc026li2zp' // replace this with your style URL
     });
-map.on('click', function(e) {
-  var features = map.queryRenderedFeatures(e.point, {
-    layers: ['2015deaths'] // replace this with the name of the layer
-  });
+          map.on('click', '2015deaths', function (e) {
+        new mapboxgl.Popup()
+            .setLngLat(e.lngLat)
+            .setHTML(e.features[0].properties.name)
+            .addTo(map);
+    });
 
-  if (!features.length) {
-    return;
-  }
+    // Change the cursor to a pointer when the mouse is over the states layer.
+    map.on('mouseenter', '2015deaths', function () {
+        map.getCanvas().style.cursor = 'pointer';
+    });
 
-  var feature = features[0];
-
-  var popup = new mapboxgl.Popup({ offset: [0, -15] })
-    .setLngLat(feature.geometry.coordinates)
-    .setHTML('<h3>' + feature.properties.name + '</h3><p>' + feature.properties.geoid + '</p>')
-    .setLngLat(feature.geometry.coordinates)
-    .addTo(map);
-});    </script>
+    // Change it back to a pointer when it leaves.
+    map.on('mouseleave', 'states-layer', function () {
+        map.getCanvas().style.cursor = '';
+    });
+});
+   </script>
   </body>
 </html>
