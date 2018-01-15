@@ -101,8 +101,11 @@ var afterMap = new mapboxgl.Map({
 var map = new mapboxgl.Compare(beforeMap, afterMap, {
     // Set this to enable comparing two maps by mouse movement:
     // mousemove: true
-});    
-beforeMap.addControl(new mapboxgl.NavigationControl());
+});
+
+    var nav = new mapboxgl.NavigationControl();
+map.addControl(nav, 'top-left');
+    
 afterMap.on('load', function () {
     // Add a layer
     afterMap.addLayer({
