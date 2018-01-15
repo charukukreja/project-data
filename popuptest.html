@@ -28,6 +28,10 @@
       container: 'map',
       style: 'mapbox://styles/charukukreja/cjc2fw7691nna2roc026li2zp' // replace this with your style URL
     });
+      map.on('click', function(e) {
+  var features = map.queryRenderedFeatures(e.vector, {
+    layers: ['2015-dv0ewk'] // replace this with the name of the layer
+  });
       map.on('click', '2015-dv0ewk', function (e) {
         new mapboxgl.Popup()
             .setLngLat(e.lngLat)
