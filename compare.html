@@ -103,25 +103,6 @@ var map = new mapboxgl.Compare(beforeMap, afterMap, {
     // mousemove: true
 });    
 afterMap.addControl(new mapboxgl.NavigationControl());
-    afterMap.on('load', function () {
-    // Add a layer
-    afterMap.addLayer({
-        'id': '2015-dv0ewk',
-        'type': 'fill',
-        'source': {
-            'type': 'vector',
-            'data': 'mapbox//:charukukreja.4wwhgfkw'
-        },
-        });
-
-    // When a click event occurs on a feature in the 2015 layer, open a popup at the
-    // location of the click, with description HTML from its properties.
-    afterMap.on('click', '2015-dv0ewk', function (e) {
-        new mapboxgl.Popup()
-            .setLngLat(e.lngLat)
-            .setHTML(e.features[0].properties.name)
-            .addTo(map);
-    });
     });
 </script>
 
