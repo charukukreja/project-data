@@ -102,8 +102,11 @@ var map = new mapboxgl.Compare(beforeMap, afterMap, {
     // Set this to enable comparing two maps by mouse movement:
     // mousemove: true
 });    
-beforeMap.addControl(new mapboxgl.NavigationControl());
-afterMap.on('load', function () {
+map.addControl(new mapboxgl.NavigationControl());
+map.addControl(new MapboxGeocoder({
+    accessToken: mapboxgl.accessToken
+}));
+    afterMap.on('load', function () {
     // Add a layer
     afterMap.addLayer({
         'id': '2015-dv0ewk',
