@@ -1,33 +1,35 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset='utf-8' />
-    <title>Points on a map</title>
+    <title>Show polygon information on click</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.31.0/mapbox-gl.js'></script>
-    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.31.0/mapbox-gl.css' rel='stylesheet' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.43.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.43.0/mapbox-gl.css' rel='stylesheet' />
     <style>
-      body {
-        margin: 0;
-        padding: 0;
-      }
-
-      #map {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        width: 100%;
-      }
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:100%; }
     </style>
-  </head>
-  <body>
-    <div id='map'></div>
-    <script>
-    mapboxgl.accessToken = 'pk.eyJ1IjoiY2hhcnVrdWtyZWphIiwiYSI6ImNqYnM5YjZxZTBxbHkydnVmMjNzajlsbG8ifQ.Pqiicpc8in5DduB-c-3Xrw'; // replace this with your access token
-    var map = new mapboxgl.Map({
-      container: 'map',
-      style: 'mapbox://styles/charukukreja/cjc2b09nn0ahu2std4cw2kwfa' // replace this with your style URL
-    });
+</head>
+<body>
+
+<style>
+.mapboxgl-popup {
+    max-width: 400px;
+    font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+}
+</style>
+<div id='map'></div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoiY2hhcnVrdWtyZWphIiwiYSI6ImNqYnM5YjZxZTBxbHkydnVmMjNzajlsbG8ifQ.Pqiicpc8in5DduB-c-3Xrw
+';
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/charukukreja/cjc2b09nn0ahu2std4cw2kwfa',
+    center: [-100.04, 38.907],
+    zoom: 3
+});
+
 map.on('load', function () {
     // Add a layer showing the state polygons.
     map.addLayer({
@@ -35,8 +37,34 @@ map.on('load', function () {
         'type': 'fill',
         'source': {
             'type': 'vector',
-            'data': 'mapbox://studio/tilesets/charukukreja.5ptvh7wr/'
+            'data': 'mapbox://charukukreja.5ptvh7wr'
         },
-    </script>
-  </body>
+        'paint': {
+            'fill-color': 'rgba(200, 100, 240, 0.4)',
+            'fill-outline-color': 'rgba(200, 100, 240, 1)'
+        }
+    });
+
+    // When a click event occurs on a feature in the states layer, open a popup at the
+    // location of the click, with description HTML from its properties.
+    map.on('click', '1999-2uye7g', function (e) {
+        new mapboxgl.Popup()
+            .setLngLat(e.lngLat)
+            .setHTML(e.features[0].properties.name)
+            .addTo(map);
+    });
+
+    // Change the cursor to a pointer when the mouse is over the states layer.
+    map.on('mouseenter', '1999-2uye7g', function () {
+        map.getCanvas().style.cursor = 'pointer';
+    });
+
+    // Change it back to a pointer when it leaves.
+    map.on('mouseleave', '1999-2uye7g', function () {
+        map.getCanvas().style.cursor = '';
+    });
+});
+</script>
+
+</body>
 </html>
