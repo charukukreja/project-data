@@ -32,11 +32,11 @@ var map = new mapboxgl.Map({
 map.on('load', function () {
     // Add a layer showing the state polygons.
     map.addLayer({
-        'id': 'counties',
+        'id': '1999-2uye7g',
         'type': 'fill',
         'source': {
-            'type': 'geojson',
-            'data': 'https://github.com/charukukreja/project-data/blob/master/map.geojson'
+            'type': 'vector',
+            'data': 'mapbox://charukukreja.5ptvh7wr'
         },
         'paint': {
             'fill-color': 'rgba(200, 100, 240, 0.4)',
@@ -46,7 +46,7 @@ map.on('load', function () {
 
     // When a click event occurs on a feature in the states layer, open a popup at the
     // location of the click, with description HTML from its properties.
-    map.on('click', 'counties', function (e) {
+    map.on('click', '1999-2uye7g', function (e) {
         new mapboxgl.Popup()
             .setLngLat(e.lngLat)
             .setHTML(e.features[0].properties.name)
@@ -54,12 +54,12 @@ map.on('load', function () {
     });
 
     // Change the cursor to a pointer when the mouse is over the states layer.
-    map.on('mouseenter', 'counties', function () {
+    map.on('mouseenter', '1999-2uye7g', function () {
         map.getCanvas().style.cursor = 'pointer';
     });
 
     // Change it back to a pointer when it leaves.
-    map.on('mouseleave', 'counties', function () {
+    map.on('mouseleave', '1999-2uye7g', function () {
         map.getCanvas().style.cursor = '';
     });
 });
