@@ -26,11 +26,11 @@
     mapboxgl.accessToken = 'pk.eyJ1IjoiY2hhcnVrdWtyZWphIiwiYSI6ImNqYnM5YjZxZTBxbHkydnVmMjNzajlsbG8ifQ.Pqiicpc8in5DduB-c-3Xrw'; // replace this with your access token
     var map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/charukukreja/cjc2fw7691nna2roc026li2zp' // replace this with your style URL
+      style: 'mapbox://styles/charukukreja/cjc2b09nn0ahu2std4cw2kwfa' // replace this with your style URL
     });
 map.on('click', function(e) {
   var features = map.queryRenderedFeatures(e.point, {
-    layers: ['2015-dv0ewk'] // replace this with the name of the layer
+    layers: ['1999-2uye7g'] // replace this with the name of the layer
   });
 
   if (!features.length) {
