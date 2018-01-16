@@ -49,7 +49,7 @@ map.on('load', function () {
     map.on('click', '1999-2uye7g', function (e) {
         new mapboxgl.Popup()
             .setLngLat(e.lngLat)
-            .setHTML(e.features[0].properties.name)
+            .setHTML('<h3>' + feature.properties.name + '</h3><p>' + feature.properties.geoid + '</p>')
             .addTo(map);
     });
 
