@@ -29,39 +29,22 @@ var map = new mapboxgl.Map({
     zoom: 3
 });
 
-map.on('load', function () {
-    // Add a layer showing the state polygons.
-    map.addLayer({
-        'id': '1999-2uye7g',
-        'type': 'fill',
-        'source': {
-            'type': 'vector',
-            'data': 'mapbox://charukukreja.5ptvh7wr'
-        },
-        'paint': {
-            'fill-color': 'rgba(200, 100, 240, 0.4)',
-            'fill-outline-color': 'rgba(200, 100, 240, 1)'
-        }
-    });
+map.on('click', function(e) {
+  var features = map.queryRenderedFeatures(e.point, {
+    layers: ['1999-2uye7g'] // replace this with the name of the layer
+  });
 
-    // When a click event occurs on a feature in the states layer, open a popup at the
-    // location of the click, with description HTML from its properties.
-    map.on('click', '1999-2uye7g', function (e) {
-        new mapboxgl.Popup()
-            .setLngLat(e.lngLat)
-            .setHTML('<h3>' + feature.properties.name + '</h3><p>' + feature.properties.geoid + '</p>')
-            .addTo(map);
-    });
+  if (!features.length) {
+    return;
+  }
 
-    // Change the cursor to a pointer when the mouse is over the states layer.
-    map.on('mouseenter', '1999-2uye7g', function () {
-        map.getCanvas().style.cursor = 'pointer';
-    });
+  var feature = features[0];
 
-    // Change it back to a pointer when it leaves.
-    map.on('mouseleave', '1999-2uye7g', function () {
-        map.getCanvas().style.cursor = '';
-    });
+  var popup = new mapboxgl.Popup({ offset: [0, -15] })
+    .setLngLat(feature.geometry.coordinates)
+    .setHTML('<h3>' + feature.properties.name + '</h3><p>' + feature.properties.geoid + '</p>')
+    .setLngLat(feature.geometry.coordinates)
+    .addTo(map);
 });
 </script>
 
