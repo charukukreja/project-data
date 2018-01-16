@@ -28,23 +28,15 @@
       container: 'map',
       style: 'mapbox://styles/charukukreja/cjc2b09nn0ahu2std4cw2kwfa' // replace this with your style URL
     });
-map.on('click', function(e) {
-  var features = map.queryRenderedFeatures(e.point, {
-    layers: ['1999-2uye7g'] // replace this with the name of the layer
-  });
-
-  if (!features.length) {
-    return;
-  }
-
-  var feature = features[0];
-
-  var popup = new mapboxgl.Popup({ offset: [0, -15] })
-    .setLngLat(feature.geometry.coordinates)
-    .setHTML('<h3>' + feature.properties.name + '</h3><p>' + feature.properties.geoid + '</p>')
-    .setLngLat(feature.geometry.coordinates)
-    .addTo(map);
-});
+map.on('load', function () {
+    // Add a layer showing the state polygons.
+    map.addLayer({
+        'id': '1999-2uye7g',
+        'type': 'fill',
+        'source': {
+            'type': 'vector',
+            'data': 'mapbox://studio/tilesets/charukukreja.5ptvh7wr/'
+        },
     </script>
   </body>
 </html>
