@@ -28,7 +28,25 @@
       container: 'map',
       style: 'mapbox://styles/charukukreja/cjc2fw7691nna2roc026li2zp' // replace this with your style URL
     });
-    // code from the next step will go here
+      
+map.on('click', function(e) {
+  var features = map.queryRenderedFeatures(e.point, {
+    layers: ['2015-dv0ewk'] // replace this with the name of the layer
+  });
+
+  if (!features.length) {
+    return;
+  }
+
+  var feature = features[0];
+
+  var popup = new mapboxgl.Popup({ offset: [0, -15] })
+    .setLngLat(feature.geometry.coordinates)
+    .setHTML('<h3>' + feature.properties.NAME + '</h3><p>' + feature.properties.GEOID + '</p>')
+    .setLngLat(feature.geometry.coordinates)
+    .addTo(map);
+});      
+      
     </script>
   </body>
 </html>
