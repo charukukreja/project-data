@@ -42,7 +42,7 @@
 
   var popup = new mapboxgl.Popup({ offset: [0, -15] })
     .setLngLat(feature.geometry.coordinates)
-    .setHTML('<h3>' + feature.properties.NAME + '</h3><p>' + feature.properties.NAME + '</p>')
+    .setHTML('<h3>' + feature.properties.2015_NCH_4 + '</h3><p>' + feature.properties.STATEFP + '</p>')
     .setLngLat(feature.geometry.coordinates)
     .addTo(map);
 });
