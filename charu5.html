@@ -31,7 +31,7 @@
 
       map.on('click', function(e) {
   var features = map.queryRenderedFeatures(e.point, {
-    layers: ['chicago-parks'] // replace this with the name of the layer
+    layers: ['2015-dv0ewk'] // replace this with the name of the layer
   });
 
   if (!features.length) {
@@ -42,7 +42,7 @@
 
   var popup = new mapboxgl.Popup({ offset: [0, -15] })
     .setLngLat(feature.geometry.coordinates)
-    .setHTML('<h3>' + feature.properties.title + '</h3><p>' + feature.properties.description + '</p>')
+    .setHTML('<h3>' + feature.properties.NAME + '</h3><p>' + feature.properties.NAME + '</p>')
     .setLngLat(feature.geometry.coordinates)
     .addTo(map);
 });
