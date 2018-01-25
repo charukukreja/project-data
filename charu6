@@ -30,7 +30,7 @@
     });
     
     map.on('click', function(e) {
-  var features = map.queryRenderedFeatures((location.point, {
+  var features = map.queryRenderedFeatures((e.point, {
     layers: ['2015-dv0ewk'] // replace this with the name of the layer
   });
 
