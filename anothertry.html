@@ -32,21 +32,17 @@ var map = new mapboxgl.Map({
 map.on('load', function () {
     // Add a layer showing the state polygons.
     map.addLayer({
-        'id': 'mapgeojson',
-        'type': 'fill',
+        'id': 'opioid',
+        'type': 'point',
         'source': {
             'type': 'geojson',
-            'data': 'https://github.com/charukukreja/project-data/blob/master/map.geojson'
+            'data': 'https://github.com/charukukreja/project-data/blob/master/opioid.geojson'
         },
-        'paint': {
-            'fill-color': 'rgba(200, 100, 240, 0.4)',
-            'fill-outline-color': 'rgba(200, 100, 240, 1)'
-        }
     });
 
     // When a click event occurs on a feature in the states layer, open a popup at the
     // location of the click, with description HTML from its properties.
-    map.on('click', 'mapgeojson', function (e) {
+    map.on('click', 'opioid', function (e) {
         new mapboxgl.Popup()
             .setLngLat(e.lngLat)
             .setHTML(e.features[0].properties.name)
@@ -54,12 +50,12 @@ map.on('load', function () {
     });
 
     // Change the cursor to a pointer when the mouse is over the states layer.
-    map.on('mouseenter', 'mapgeojson', function () {
+    map.on('mouseenter', 'opioid', function () {
         map.getCanvas().style.cursor = 'pointer';
     });
 
     // Change it back to a pointer when it leaves.
-    map.on('mouseleave', 'mapgeojson', function () {
+    map.on('mouseleave', 'opioid', function () {
         map.getCanvas().style.cursor = '';
     });
 });
