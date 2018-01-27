@@ -27,7 +27,13 @@
       container: 'map',
       style: 'mapbox://styles/charukukreja/cjcu0zq4t1lg92so073nmx9ed' // replace this with your style URL
     });
-    // code from the next step will go here
-    </script>
+map.on('load', function () {
+    map.addLayer({
+        "id": "2015-dv0ewk",
+        "type": "fill",
+        "source": {
+            type: 'vector',
+            url: 'https://www.mapbox.com/studio/tilesets/charukukreja.4wwhgfkw'
+        }    </script>
   </body>
 </html>
