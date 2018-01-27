@@ -32,7 +32,7 @@ var map = new mapboxgl.Map({
 map.on('load', function () {
     // Add a layer showing the state polygons.
     map.addLayer({
-        'id': 'map.geojson',
+        'id': 'mapgeojson',
         'type': 'fill',
         'source': {
             'type': 'geojson',
@@ -46,7 +46,7 @@ map.on('load', function () {
 
     // When a click event occurs on a feature in the states layer, open a popup at the
     // location of the click, with description HTML from its properties.
-    map.on('click', 'map.geojson', function (e) {
+    map.on('click', 'mapgeojson', function (e) {
         new mapboxgl.Popup()
             .setLngLat(e.lngLat)
             .setHTML(e.features[0].properties.name)
@@ -54,12 +54,12 @@ map.on('load', function () {
     });
 
     // Change the cursor to a pointer when the mouse is over the states layer.
-    map.on('mouseenter', 'map.geojson', function () {
+    map.on('mouseenter', 'mapgeojson', function () {
         map.getCanvas().style.cursor = 'pointer';
     });
 
     // Change it back to a pointer when it leaves.
-    map.on('mouseleave', 'map.geojson', function () {
+    map.on('mouseleave', 'mapgeojson', function () {
         map.getCanvas().style.cursor = '';
     });
 });
