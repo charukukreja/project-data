@@ -29,39 +29,30 @@ var map = new mapboxgl.Map({
     zoom: 3
 });
 
-map.on('load', function () {
-    // Add a layer showing the state polygons.
-    map.addLayer({
-        'id': 'mapgeojson',
-        'type': 'fill',
-        'source': {
-            'type': 'geojson',
-            'data': 'https://github.com/charukukreja/project-data/blob/master/map.geojson'
-        },
-        'paint': {
-            'fill-color': 'rgba(200, 100, 240, 0.4)',
-            'fill-outline-color': 'rgba(200, 100, 240, 1)'
-        }
-    });
+map.on('style.load', function() {
+  map.addSource('mapgeojson', {
+    'type': 'geojson',
+    /*many types of data can be added, such as geojson, vector tiles or raster data*/
+    'data': 'https://github.com/charukukreja/project-data/blob/master/map.geojson'
+  });
 
-    // When a click event occurs on a feature in the states layer, open a popup at the
-    // location of the click, with description HTML from its properties.
-    map.on('click', 'mapgeojson', function (e) {
-        new mapboxgl.Popup()
-            .setLngLat(e.lngLat)
-            .setHTML(e.features[0].properties.name)
-            .addTo(map);
-    });
+  /*here we are adding a source, then a layer based on that that source*/
 
-    // Change the cursor to a pointer when the mouse is over the states layer.
-    map.on('mouseenter', 'mapgeojson', function () {
-        map.getCanvas().style.cursor = 'pointer';
-    });
+  map.addLayer({
+    'id': 'mapgeojson',
+    'type': 'fill',    /*define the type of layer fill, line, point, fill-extrusion, background, raster, circle*/
+    'layout': {
+      'visibility': 'visible'
+    },
+    
+    /*there are many options for styling - this is a simple style*/
 
-    // Change it back to a pointer when it leaves.
-    map.on('mouseleave', 'mapgeojson', function () {
-        map.getCanvas().style.cursor = '';
-    });
+    'paint': {
+      'fill-color': 'skyblue',
+      'fill-outline-color': 'white',
+      'fill-opacity': 0.9
+    }
+  });
 });
 </script>
 
